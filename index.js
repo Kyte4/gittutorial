@@ -9,13 +9,19 @@ const app = express()
 app.set('view engine', 'ejs')
 app.set('views',path.resolve(__dirname,'ejs'))
 
-app.use(express.static(path.resolve(__dirname,'static')))
+
 app.use(requestTime)
 app.use(logger)
 
 app.get('/',(req,res)=>{
-    res.render('index.ejs')
+    res.render('index', {title: 'Main page'})
 })
+
+app.get('/features',(req,res)=>{
+    res.render('index', {title: 'features page'})
+})
+
+
 //app.get('/', (req,res)=>{
     // res.sendfile(path.resolve(__dirname,'static','index.html'))
     //res.send('<h1>Hello express!<h1>')
